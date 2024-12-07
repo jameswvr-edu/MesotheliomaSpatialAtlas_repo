@@ -1,7 +1,8 @@
 import streamlit as st
 from st_clickable_images import clickable_images
+from streamlit_image_select import image_select
 from PIL import Image
-from utils import get_orderedList, get_imageNames, load_HEImages, load_coreImages, show_plotly_image, get_core_feature, get_coreStatistic
+from utils import get_orderedList, get_imageNames, load_HEImages, load_coreImages, show_plotly_image, get_core_feature, get_coreStatistic, load_clickable_coreImages
 from style import define_layout
 import os
 import requests
@@ -148,109 +149,206 @@ def data_page():
 
 		if clicked == -1: clicked = 0
 
-		vargs0 = ["H&E"]
-		vargs1 = ["mIF", "CD4", "CD8", "CD20", "CD68", "FOXP3", "panCK"]
-		vargs2 = ["mIF ", "CD56", "CD11c", "BAP1","NF2", "MTAP","LAG3"] 
-		vargs = vargs0 +  vargs1 + vargs2   
+		vargs0 = ["H&E"] # 0
+		vargs1 = ["mIF (Marker Panel)", "CD4 (Marker Panel)", "CD8 (Marker Panel)", "CD20 (Marker Panel)", "CD68 (Marker Panel)", "FOXP3 (Marker Panel)", "panCK (Marker Panel)"] # 1-7
+		vargs2 = ["mIF (Protein Panel)", "CD56 (Protein Panel)", "CD11c (Protein Panel)", "BAP1 (Protein Panel)","NF2 (Protein Panel)", "MTAP (Protein Panel)","LAG3 (Protein Panel)"] # 8-14
+		vargs = vargs0 + vargs1 + vargs2   
 
 		chanel_images = load_coreImages(showedImage_names[clicked],showedCore_ids[clicked],showedCore_ids2[clicked] )
-		ls_images = list(chanel_images.values())
+#		ls_images = list(chanel_images.values())
+#		click_images = load_clickable_coreImages(showedImage_names[clicked],showedCore_ids[clicked],showedCore_ids2[clicked])
 
-		clab = st.columns([1,7,7])
+#		clab = st.columns([1,7,7])
 		
-		clab[1].markdown( '<p style="font-size: 14px;  font-weight: bold"> Panel-Marker </p>',  unsafe_allow_html=True) 
-		clab[2].markdown(' <p style="font-size: 14px;  font-weight: bold"> Panel-Protein </p>',  unsafe_allow_html=True)
+#		clab[1].markdown( '<p style="font-size: 14px;  font-weight: bold"> Panel-Marker </p>',  unsafe_allow_html=True) 
+#		clab[2].markdown(' <p style="font-size: 14px;  font-weight: bold"> Panel-Protein </p>',  unsafe_allow_html=True)
 		
 		cimg = st.columns(15)
 		
-		for i in range(15):
-			with cimg[i]:
-				#st.html ("<img src='ls_images[i]'/>")#"<input type='image' src=ls_images[1]/>")
-				#st.button("![Balloons](https://cdn.creazilla.com/cliparts/26296/colorful-balloons-clipart-xl.png) Generate balloons")
-				#st.button(f"![Panel]({ls_images[i]})", key=i)
-				#st.button(st.markdown(f"<p>![Panel]({ls_images[i]})</p>", unsafe_allow_html=True), key=i)
-				#st.image(ls_images[i], unsafe_allow_html=True)
-				st.markdown(ls_images[i], unsafe_allow_html=True)
-				st.markdown( f"<p style='font-size: 14px;  font-weight: normal; text-align: center'>{vargs[i]}</p>",  unsafe_allow_html=True) 
+# 		for i in range(15):
+# 			with cimg[i]:
+# 				#st.html ("<img src='ls_images[i]'/>")#"<input type='image' src=ls_images[1]/>")
+# 				#st.button("![Balloons](https://cdn.creazilla.com/cliparts/26296/colorful-balloons-clipart-xl.png) Generate balloons")
+# 				#st.button(f"![Panel]({ls_images[i]})", key=i)
+# 				#st.button(st.markdown(f"<p>![Panel]({ls_images[i]})</p>", unsafe_allow_html=True), key=i)
+# 				#st.image(ls_images[i], unsafe_allow_html=True)
+# 				st.markdown(ls_images[i], unsafe_allow_html=True)
+# 				st.markdown( f"<p style='font-size: 14px;  font-weight: normal; text-align: center'>{vargs[i]}</p>",  unsafe_allow_html=True) 
 
-		st.divider()
-		c1, c2,_,c3 = st.columns([1.5, 7,0.5,2.5])
+		
 
+
+# 		clicked_img = clickable_images(
+# 			chanel_images, 
+# 			div_style={
+# 				"display": "flex",
+# 				"justify-content": "center",
+# 				"flex-wrap": "wrap",
+# 			},
+# 			img_style={
+# 				"margin": "10px",
+# 				"height": "50px",
+# 				"border-radius": "15%"
+# 			},
+# 		)
+#		st.header({clicked_img})
+			
+#		st.divider()
+
+		c1, c2,_,c3 = st.columns([4, 6.75,0.25,2.5])
+		with c1:
+			st.markdown( '<p style="font-family:sans-serif; color:#002e8c; font-size: 22px;  font-weight: bold">Image type</p>',  unsafe_allow_html=True) #sans-serif   Soin Sans Pro
+
+		#with st.expander("Channel selection", expanded=True):
+#			clicked_img2 = -1
+#			clicked_img3 = -1
+			
+			with st.container(height=650):
+				clicked_img = image_select(
+					label="",
+					images=chanel_images,
+					captions=vargs,
+					use_container_width=False,
+					return_value="index"
+				)
+				# clicked_img = image_select(
+# 					label="Panel-Marker",
+# 					images=[
+# 						chanel_images[1],
+# 						chanel_images[2],
+# 						chanel_images[3],
+# 						chanel_images[4],
+# 						chanel_images[5],
+# 						chanel_images[6],
+# 						chanel_images[7],
+# 					],
+# 					captions=vargs1,
+# 					use_container_width=False,
+# 					return_value="index"
+# 				)
+# 				clicked_img = image_select(
+# 					label="Panel-Protein",
+# 					images=[
+# 						chanel_images[8],
+# 						chanel_images[9],
+# 						chanel_images[10],
+# 						chanel_images[11],
+# 						chanel_images[12],
+# 						chanel_images[13],
+# 						chanel_images[14],
+# 					],
+# 					captions=vargs2,
+# 					use_container_width=False,
+# 					return_value="index"
+# 				)
 		# Selection Column
 	#	with c1:
 		# st.markdown("#### Image type")
-		st.markdown( '<p style="font-family:sans-serif; color:#002e8c; font-size: 22px;  font-weight: bold">Image type</p>',  unsafe_allow_html=True) #sans-serif   Soin Sans Pro
 
-		option2dir = {"H&E": f"{REPO_HE}",
-					"mIF": f"{REPO_TMA}/panel1/multi",
-					"CD4": f"{REPO_TMA}/panel1/CD4",
-					"CD8": f"{REPO_TMA}/panel1/CD8",
-					"CD20": f"{REPO_TMA}/panel1/CD20",
-					"CD68": f"{REPO_TMA}/panel1/CD68",
-					"FOXP3": f"{REPO_TMA}/panel1/FOXP3",
-					"panCK": f"{REPO_TMA}/panel1/panCK",
-					"mIF ": f"{REPO_TMA}/panel2/multi2",
-					"CD56": f"{REPO_TMA}/panel2/CD56",
-					"CD11c": f"{REPO_TMA}/panel2/CD11c",
-					"BAP1": f"{REPO_TMA}/panel2/BAP1",
-					"NF2": f"{REPO_TMA}/panel2/NF2",
-					"MTAP": f"{REPO_TMA}/panel2/MTAP",
-					"LAG3": f"{REPO_TMA}/panel2/LAG3"
-		}
+# 		option2dir = {"H&E": f"{REPO_HE}",
+# 					"mIF": f"{REPO_TMA}/panel1/multi",
+# 					"CD4": f"{REPO_TMA}/panel1/CD4",
+# 					"CD8": f"{REPO_TMA}/panel1/CD8",
+# 					"CD20": f"{REPO_TMA}/panel1/CD20",
+# 					"CD68": f"{REPO_TMA}/panel1/CD68",
+# 					"FOXP3": f"{REPO_TMA}/panel1/FOXP3",
+# 					"panCK": f"{REPO_TMA}/panel1/panCK",
+# 					"mIF ": f"{REPO_TMA}/panel2/multi2",
+# 					"CD56": f"{REPO_TMA}/panel2/CD56",
+# 					"CD11c": f"{REPO_TMA}/panel2/CD11c",
+# 					"BAP1": f"{REPO_TMA}/panel2/BAP1",
+# 					"NF2": f"{REPO_TMA}/panel2/NF2",
+# 					"MTAP": f"{REPO_TMA}/panel2/MTAP",
+# 					"LAG3": f"{REPO_TMA}/panel2/LAG3"
+# 		}
+
+
+		option2dir = [f"{REPO_HE}",
+					f"{REPO_TMA}/panel1/multi",
+					f"{REPO_TMA}/panel1/CD4",
+					f"{REPO_TMA}/panel1/CD8",
+					f"{REPO_TMA}/panel1/CD20",
+					f"{REPO_TMA}/panel1/CD68",
+					f"{REPO_TMA}/panel1/FOXP3",
+					f"{REPO_TMA}/panel1/panCK",
+					f"{REPO_TMA}/panel2/multi2",
+					f"{REPO_TMA}/panel2/CD56",
+					f"{REPO_TMA}/panel2/CD11c",
+					f"{REPO_TMA}/panel2/BAP1",
+					f"{REPO_TMA}/panel2/NF2",
+					f"{REPO_TMA}/panel2/MTAP",
+					f"{REPO_TMA}/panel2/LAG3"
+		]
+		
+		clicked_img2name = [
+			"H&E",
+			"mIF",
+			"CD4",
+			"CD8",
+			"CD20",
+			"CD68",
+			"FOXP3",
+			"panCK",
+			"mIF ",
+			"CD56",
+			"CD11c",
+			"BAP1",
+			"NF2",
+			"MTAP",
+			"LAG3"
+		]
 
 
 		options = dict()
-		c1 = st.columns(15)
+#		c1 = st.columns(15)
 		
-		with st.sidebar:
-			clicked_img = clickable_images(
-				ls_images, 
-				div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
-				img_style={"margin": "10px", "height": "70px"},
-			)
-		
-		for key in vargs0:
-			options[key] = st.radio(
-			key,
-			#value=True,
-			key=key,
-			#on_change=disable_other_checkboxes,
-			args=( list(set(vargs) - set([key])) +[key] ),
-			horizontal=True,
-			options = vargs0
-		)
-		# st.markdown("###### Panel-marker")
-		for key in vargs1:
-			options[key] = st.checkbox(
-			key,
-			value=True,
-			key=key,
-			on_change=disable_other_checkboxes,
-			args=( list(set(vargs) - set([key])) +[key] ),
-		)
-		# st.markdown("###### Panel-protein")
-		for key in vargs2:
-			options[key] = st.checkbox(
-			key,
-			key=key,
-			on_change=disable_other_checkboxes,
-			args=( list(set(vargs) - set([key])) +[key] ),
-		)
+# 		for key in vargs0:
+# 			options[key] = st.radio(
+# 			key,
+# 			#value=True,
+# 			key=key,
+# 			#on_change=disable_other_checkboxes,
+# 			args=( list(set(vargs) - set([key])) +[key] ),
+# 			horizontal=True,
+# 			options = vargs0
+# 		)
+# 		# st.markdown("###### Panel-marker")
+# 		for key in vargs1:
+# 			options[key] = st.checkbox(
+# 			key,
+# 			value=True,
+# 			key=key,
+# 			on_change=disable_other_checkboxes,
+# 			args=( list(set(vargs) - set([key])) +[key] ),
+# 		)
+# 		# st.markdown("###### Panel-protein")
+# 		for key in vargs2:
+# 			options[key] = st.checkbox(
+# 			key,
+# 			key=key,
+# 			on_change=disable_other_checkboxes,
+# 			args=( list(set(vargs) - set([key])) +[key] ),
+# 		)
 
 		
 		# rd = st.radio("", ("H&E","", "mIF", "mIF ", "CD4", "CD8", "CD56", "CD68", "CD11c", "FOXP3","CD20", "BAP1","NF2", "MTAP","LAG3" ))
 
 		# Image Column
 		with c2:
-		
 
-			option = get_current_checkedBox(options)
-
-			dir = option2dir[option]
 		
-			if option == "H&E":
+#			option = get_current_checkedBox(clicked_img)
+
+#			option = get_current_checkedBox(options)
+			
+			dir = option2dir[clicked_img]
+			option = clicked_img2name[clicked_img]
+#			dir = clicked_img2name[clicked_img]		
+#			dir = option2dir[option]
+
+			if clicked_img == 0: #H&E
 				filename = f"{showedImage_names[clicked]}.jpg"
-			elif option in vargs1 :   
+			elif 1 <= clicked_img <=7 : # in vargs1 :   
 				filename = f"{showedCore_ids[clicked]}_composite_image.jpg"
 			else:
 				filename = f"{showedCore_ids2[clicked]}_composite_image.jpg"
@@ -293,16 +391,17 @@ def data_page():
 
 			core_id = showedCore_ids[clicked]
 
-			fetu1, fetu2, fetu_plus = get_core_feature(c1_IDs, c2_IDs, core_id)
+			fetu1, fetu2, fetu_plus = get_core_feature(c2_IDs, c3_IDs, core_id)
 			for i in range(5):
-				st.markdown(f"**{c1_names[i]}** : {fetu1[i]}", True)
+				st.markdown(f"**{c2_names[i]}** : {fetu1[i]}", True)
 			for i in range(5):
-				st.markdown(f"**{c2_names[i]}** : {fetu2[i]}", True)
+				st.markdown(f"**{c3_names[i]}** : {fetu2[i]}", True)
 				# st.markdown(f"**:black[{c2_names[i]}]** : {fetu2[i]}", True) 
 			for item in fetu_plus.keys():
 				st.markdown(f"**{item}** : {fetu_plus[item]}", True)   
 
 			percent, count1, count2 = get_coreStatistic(core_id, option)
+
 			if option in vargs1:
 				count = count1
 			else:
