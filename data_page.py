@@ -6,6 +6,7 @@ from utils import get_orderedList, get_imageNames, load_HEImages, load_coreImage
 from style import define_layout
 import os
 import requests
+import re
 
 def disable_other_checkboxes(*other_checkboxes_keys):
 	# if current one is trun to false, reset it to true
@@ -17,7 +18,7 @@ def disable_other_checkboxes(*other_checkboxes_keys):
 		
 def get_current_checkedBox(options):
 	key = list(options.keys())[list(options.values()).index(True)]
-	return (key)	  
+	return (key)	 
 		
 def data_page():
 	
@@ -122,18 +123,25 @@ def data_page():
 	
 			image_names, core_ids, core_ids2 = get_imageNames(cs2, cs3, c2_IDs,c3_IDs)
 			images, showedImage_names, showedCore_ids, showedCore_ids2 = load_HEImages(path_img_logo , list(image_names), list(core_ids), list(core_ids2))
-	
+			
+			#st.write(f"{showedImage_names}")
+			
 			if len(images) > 0 :
 				st.markdown("## Please select a core.", True)
-				st.write("")
-	
-				# st.markdown(f"##### ( {len(images)} cores )", True)
+#				st.markdown(f"##### ( {len(images)} cores )", True)
 				with st.container(height=350):
-					clicked = clickable_images(
-						images, 
-						div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
-						img_style={"margin": "10px", "height": "70px"},
+					clicked = image_select(
+						label="",
+						images=images,
+						captions=showedImage_names,#[f"{i+1:04}" for i in range(len(images))],
+						use_container_width=False,
+						return_value="index"
 					)
+# 					clicked = clickable_images(
+# 						images, 
+# 						div_style={"display": "flex", "justify-content": "center", "flex-wrap": "wrap"},
+# 						img_style={"margin": "10px", "height": "70px"},
+# 					)
 			else:
 				st.write("No core for current selection.")
 
@@ -336,7 +344,7 @@ def data_page():
 		# Image Column
 		with c2:
 
-		
+
 #			option = get_current_checkedBox(clicked_img)
 
 #			option = get_current_checkedBox(options)
@@ -345,7 +353,6 @@ def data_page():
 			option = clicked_img2name[clicked_img]
 #			dir = clicked_img2name[clicked_img]		
 #			dir = option2dir[option]
-
 			if clicked_img == 0: #H&E
 				filename = f"{showedImage_names[clicked]}.jpg"
 			elif 1 <= clicked_img <=7 : # in vargs1 :   
