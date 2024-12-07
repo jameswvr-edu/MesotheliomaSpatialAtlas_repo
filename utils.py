@@ -159,12 +159,15 @@ def load_coreImages(HE_id, panel1_id, panel2_id):
     p1s = ["multi", "CD4", "CD8", "CD20", "CD68", "FOXP3", "panCK"]
     p2s = ["multi2", "CD56", "CD11c", "BAP1","NF2", "MTAP","LAG3"] 
 
-    images = {}
+#    images = {}
+    images = []
 
     file = f"{PATH_HE_logo}/{HE_id}.jpg"
     with open(file, "rb") as image:
         encoded = base64.b64encode(image.read()).decode()
-        images["H&E"]=(f"<img src= 'data:image/png;base64,{encoded}' class='img-fluid' style='width:100%'>")
+        images.append(f"data:image/png;base64,{encoded}")
+#        images["H&E"]=(f"<img src= 'data:image/png;base64,{encoded}' class='img-fluid' style='width:100%'>")
+
 
     for chanel in p1s:
         file = f"{PATH_panel1_logo}/{chanel}/{panel1_id}.jpg"
@@ -173,7 +176,9 @@ def load_coreImages(HE_id, panel1_id, panel2_id):
         with open(file, "rb") as image:
             encoded = base64.b64encode(image.read()).decode()
             label = chanel.replace("multi", "Composite")
-            images[label]=(f"<img src= 'data:image/png;base64,{encoded}' class='img-fluid' style='width:100%'>")
+            images.append(f"data:image/png;base64,{encoded}")
+#            images[label]=(f"<img src= 'data:image/png;base64,{encoded}' class='img-fluid' style='width:100%'>")
+
     
     for chanel in p2s:
         file = f"{PATH_panel2_logo}/{chanel}/{panel2_id}.jpg"
@@ -182,7 +187,8 @@ def load_coreImages(HE_id, panel1_id, panel2_id):
         with open(file, "rb") as image:
             encoded = base64.b64encode(image.read()).decode()
             label = chanel.replace("multi2", "Composite ")
-            images[label]=(f"<img src= 'data:image/png;base64,{encoded}' class='img-fluid' style='width:100%'>")
+            images.append(f"data:image/png;base64,{encoded}")
+#            images[label]=(f"<img src= 'data:image/png;base64,{encoded}' class='img-fluid' style='width:100%'>")
     return(images)
 
 def get_imageNames(cs1, cs2, c1_IDs, c2_IDs):
