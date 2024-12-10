@@ -20,7 +20,7 @@ def citation_page():
     # st.markdown(f"<p style='color: black; font-weight: bold'>General citation for the Mesothelioma Spatial Atlas</h3>", unsafe_allow_html=True)
     # st.markdown(f"<p style='text-align: justify; color: black;'>{Citation_general}</h4>", unsafe_allow_html=True) 
     st.markdown("**General citation for the Mesothelioma Spatial Atlas**") 
-    st.markdown("If you cite or display any content, or reference this website, in any format, written or otherwise, including print or web publications, presentations, grant applications, websites, other online applications such as blogs, or other works, you must include a reference to our website: https://mesotheliomaspatialatlas.streamlit.app.")
+    st.markdown("If you cite, display, or reference this website in any format—print, web, presentations, grant applications, blogs, or other works—you must include the reference: https://mesotheliomaspatialatlas.streamlit.app.")
 
     st.markdown("###")
     # st.markdown(f"<p style='color: black; font-weight: bold'>Specific citation for image, chanel or data</h3>", unsafe_allow_html=True)
