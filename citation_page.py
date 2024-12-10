@@ -15,13 +15,13 @@ def citation_page():
     
     # st.markdown(f"<p style='color: black; font-weight: bold'>Citation guidelines for the Mesothelioma Spatial Atlas</h2>", unsafe_allow_html=True)
     st.markdown('<span style="font-size:25px;"> **Citation guidelines for the Mesothelioma Spatial Atlas**</span>', unsafe_allow_html=True)
-    st.markdown('<span style="font-size:18px;">we encourage you to use these resources for your research and commercial purposes, we want to ensure that our content is given proper citation in all cases where it is used.</span>', unsafe_allow_html=True) 
+    st.markdown('<span style="font-size:18px;">While we encourage you to use these resources for your research and commercial purposes, we want to ensure that our content is given proper citation in all cases where it is used.</span>', unsafe_allow_html=True) 
     
     st.markdown("###")
     # st.markdown(f"<p style='color: black; font-weight: bold'>General citation for the Mesothelioma Spatial Atlas</h3>", unsafe_allow_html=True)
     # st.markdown(f"<p style='text-align: justify; color: black;'>{Citation_general}</h4>", unsafe_allow_html=True) 
     st.markdown('<span style="font-size:21px;"> **General citation for the Mesothelioma Spatial Atlas**</span>', unsafe_allow_html=True) 
-    st.markdown('<span style="font-size:18px;">If you cite or display any content, or reference this website, in any format, written or otherwise, including print or web publications, presentations, grant applications, websites, other online applications such as blogs, or other works, you must include a reference to our website: https://mesotheliomaspatialatlas.streamlit.app.</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:18px;">If you cite, display, or reference this website in any format—print, web, presentations, grant applications, blogs, or other works—you must include the reference: https://mesotheliomaspatialatlas.streamlit.app.</span>', unsafe_allow_html=True)
 
     st.markdown("###")
     # st.markdown(f"<p style='color: black; font-weight: bold'>Specific citation for image, chanel or data</h3>", unsafe_allow_html=True)
@@ -31,7 +31,7 @@ def citation_page():
     st.markdown("###")
     # st.markdown(f"<p style='color: black; font-weight: bold'>Citation</h3>", unsafe_allow_html=True)
     st.markdown('<span style="font-size:21px;">**Citation**</span>', unsafe_allow_html=True)
-    st.markdown('<span style="font-size:18px;">you find the images or data from this website helpful, please cite the paper: https://www.biorxiv.org/content/10.1101/2023.09.06.556559v1</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:18px;">If you find the images or data from this website helpful, please cite the paper: https://www.biorxiv.org/content/10.1101/2023.09.06.556559v1</span>', unsafe_allow_html=True)
 
    
 
