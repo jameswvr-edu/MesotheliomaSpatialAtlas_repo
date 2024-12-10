@@ -33,7 +33,7 @@ footer="""
 
 <div class="footer">
 <p style="font-size:  14px; color:#FFB81C;">© 2023 Osmanbeyoglulab.com. All rights reserved.</p>
-<a href="https://hillman.upmc.com/"><img class="image" src="./app/static/UPMC_white.png" alt="Hillman.UPMC.com Link" width="70" height="50"></a>
+<a href="https://hillman.upmc.com/"><img class="image" src="./static/UPMC_white.png" alt="Hillman.UPMC.com Link" width="70" height="50"></a>
 <a href="https://www.pitt.edu/"><img class="image" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/University_of_Pittsburgh_seal.svg/300px-University_of_Pittsburgh_seal.svg.png"alt="Pitt.edu Link" width="45" height="45"></a>
 <a href="https://github.com/osmanbeyoglulab"><img class="image" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Link" width="45" height="45"></a>
 <a href="https://twitter.com/hosmanbeyoglu?lang=en"><img class="image" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg"alt="X Link" width="45" height="40"></a>
