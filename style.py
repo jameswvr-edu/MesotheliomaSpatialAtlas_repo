@@ -2,34 +2,37 @@ import streamlit as st
 
 footer="""
 <style>
-  
-    .image 
-    { 
-        padding: 10px;
-        transition: transform .2s;
-    }
+	h1 {
+		color: #003594;
+	}
+	
+	.image 
+	{ 
+		padding: 10px;
+		transition: transform .2s;
+	}
 
 
-    .image:hover {  
-        transform: scale(1.5);
-        transition: 0.2s;
-    }
-    
-    .footer {
-        position: relative;
-        width: 100%;
-        left: 0;
-        bottom: 0;
-        background-color: white;
-        margin-top: auto;
-        color: black;
-        padding: 24px;
-        text-align: center;
-    }
+	.image:hover {  
+		transform: scale(1.5);
+		transition: 0.2s;
+	}
+	
+	.footer {
+		position: relative;
+		width: 100%;
+		left: 0;
+		bottom: 0;
+		background-color: #003594;
+		margin-top: auto;
+		color: black;
+		padding: 24px;
+		text-align: center;
+	}
 </style>
 
 <div class="footer">
-<p style="font-size:  13px">© 2023 Osmanbeyoglulab.com. All rights reserved.</p>
+<p style="font-size:  13px; color:#FFB81C;">© 2023 Osmanbeyoglulab.com. All rights reserved.</p>
 <a href="https://hillman.upmc.com/"><img class="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7c7pXIkFgMPVM2csVE6MenUFLEsgF5beCeMJzogkPkXPC4xEo9OTHf6nVpqsb3PvisRk&usqp=CAU"alt="github" width="70" height=50"></a>
 <a href="https://www.pitt.edu/"><img class="image" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/University_of_Pittsburgh_seal.svg/300px-University_of_Pittsburgh_seal.svg.png"alt="github" width="45" height="45"></a>
 <a href="https://github.com/osmanbeyoglulab"><img class="image" src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github" width="45" height="45"></a>
@@ -41,37 +44,37 @@ footer="""
 
 
 page_style = """
-    <style>
-        #MainMenu {visibility: hidden;} 
-        footer {visibility: hidden;} 
-    </style>
+	<style>
+		#MainMenu {visibility: hidden;} 
+		footer {visibility: hidden;} 
+	</style>
 """
 
 
 def define_layout(max_width, padding_top='0rem', padding_right='0rem', padding_left='0rem', padding_bottom='0rem'):
 
-    # # add page to relative width
+	# # add page to relative width
 # max_width_str = f"max-width: {63.5}%;"
 # st.markdown(f"""
-#     <style>
-#     .appview-container .main .block-container{{{max_width_str}}}
-#     </style>
-#     """,
-#     unsafe_allow_html=True,
+#	 <style>
+#	 .appview-container .main .block-container{{{max_width_str}}}
+#	 </style>
+#	 """,
+#	 unsafe_allow_html=True,
 # )   
 
-    st.markdown(
-        f"""
-        <style>
-            .appview-container .main .block-container{{
-                max-width: {max_width};
-                padding-top: {padding_top};
-                padding-right: {padding_right};
-                padding-left: {padding_left};
-                padding-bottom: {padding_bottom};
-            }}
-          
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+	st.markdown(
+		f"""
+		<style>
+			.appview-container .main .block-container{{
+				max-width: {max_width};
+				padding-top: {padding_top};
+				padding-right: {padding_right};
+				padding-left: {padding_left};
+				padding-bottom: {padding_bottom};
+			}}
+		  
+		</style>
+		""",
+		unsafe_allow_html=True,
+	)
