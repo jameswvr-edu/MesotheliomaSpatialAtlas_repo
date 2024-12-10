@@ -39,6 +39,7 @@ def data_page():
 		[data-testid=stSidebar] {
 			background-color: white;
 		}
+
 	#	 [data-testid="stSidebar"][aria-expanded="true"] > div:first-child{
 	#	 width: 300px;
 	# }
@@ -87,7 +88,7 @@ def data_page():
 	
 		#Filters
 		with col2:
-			st.header("Filters")
+			st.subheader("Filters")
 			
 			# Filter Column 1
 			c2_IDs = ["Institute", "Classification","CaseType","subtype", "Grade"]
@@ -101,7 +102,7 @@ def data_page():
 							key = c2_IDs[i]
 						)
 		with col3:
-			st.header("")
+			st.subheader("") #used for spacing
 			
 			# Filter Column 2
 			c3_IDs = ["Gender", "DiagnosisAge","AsbestosExposure","Race", "smoking"]
@@ -127,7 +128,7 @@ def data_page():
 			#st.write(f"{showedImage_names}")
 			
 			if len(images) > 0 :
-				st.markdown("## Please select a core.", True)
+				st.markdown( '<p style="font-family:sans-serif; color:#002e8c; font-size: 22px;  font-weight: bold">Please select a core:</p>',  unsafe_allow_html=True)
 #				st.markdown(f"##### ( {len(images)} cores )", True)
 				with st.container(height=350):
 					clicked = image_select(
