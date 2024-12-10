@@ -44,7 +44,7 @@ def citation_page():
     mla_citation="Ma, Xiaojun et al. “Spatial Landscape of Malignant Pleural and Peritoneal Mesothelioma Tumor Immune Microenvironments.” Cancer research communications vol. 4,8 (2024): 2133-2146. doi:10.1158/2767-9764.CRC-23-0524"
  
 
-    c1,c2,c3=st.columns([0.3,1,3])
+    c1,c2,c3=st.columns([0.3,1,2.5])
 
     with c1:
         
