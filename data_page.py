@@ -216,7 +216,7 @@ def data_page():
 				img = requests.get(imgurl)
 				image_data = img.content
 				
-				st.markdown(f"[Click here to view full size image.]({imgurl})")
+				st.markdown(f"[Click here to view full size image. :material/open_in_new:]({imgurl})")
 				
 				# Button to open image in another window
 				
@@ -225,6 +225,8 @@ def data_page():
 					data=image_data,
 					file_name=filename,
 					mime="image/png",
+					type="primary",
+					icon=":material/download:"
 				)
 			else:
 				st.markdown("#")

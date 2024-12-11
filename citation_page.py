@@ -59,7 +59,7 @@ def citation_page():
                 font-size: 16px;
                 font-weight: bold;
                 color: white !important;
-                background-color: #000080; /* Navy blue */
+                background-color: #003594; /* Pitt Royal Blue */
                 text-align: center;
                 text-decoration: none;
                 border-radius: 5px;
@@ -68,11 +68,11 @@ def citation_page():
                 transition: background-color 0.3s, transform 0.2s
             }}
             .button:hover {{
-                background-color: #1a1aff; /* Lighter blue on hover */
+                background-color: #00205B; /* Medium Blue on hover */
                 transform: scale(1.05); /* Slight zoom effect */
             }}
             .button:active {{
-                background-color: #00004d; /* Darker blue on click */
+                background-color: #003594; /* Pitt Royal Blue on click */
                 transform: scale(0.95); /* Slight shrink effect */
             }}
         </style>    
@@ -96,7 +96,7 @@ def citation_page():
                 font-size: 16px;
                 font-weight: bold;
                 color: white !important;
-                background-color: #000080; /* Navy blue */
+                background-color: #003594; /* Pitt Royal Blue */
                 text-align: center;
                 text-decoration: none;
                 border-radius: 5px;
@@ -105,11 +105,11 @@ def citation_page():
                 transition: background-color 0.3s, transform 0.2s
             }}
             .button:hover {{
-                background-color: #1a1aff; /* Lighter blue on hover */
+                background-color: #00205B; /* Medium Blue on hover */
                 transform: scale(1.05); /* Slight zoom effect */
             }}
             .button:active {{
-                background-color: #00004d; /* Darker blue on click */
+                background-color: #003594; /* Pitt Royal Blue on click */
                 transform: scale(0.95); /* Slight shrink effect */
             }}
         </style>    
@@ -117,6 +117,7 @@ def citation_page():
         ">
             MLA
         </a>
+        
         """
         st.markdown(mla_button,  unsafe_allow_html=True)
     with c3: 
