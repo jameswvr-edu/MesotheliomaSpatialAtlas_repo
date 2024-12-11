@@ -36,8 +36,14 @@ def home_page():
     # with m2_:
         st.markdown("#")
         st.markdown(f"<p style='text-align: justify; color: black; font-size: 18px'>{Desc.Abstract}</h4>", unsafe_allow_html=True) 
-        st.markdown("#")
-        st.markdown('<span style="font-size:18px;"> Read our publication here 👉 https://www.biorxiv.org/content/10.1101/2023.09.06.556559v1</span>', unsafe_allow_html=True)    
+    #    st.markdown("#")
+        st.link_button(
+        	"Read our publication here",
+        	"https://www.biorxiv.org/content/10.1101/2023.09.06.556559v1",
+        	type= "primary",
+        	icon= ":material/open_in_new:"
+        )
+    #   st.markdown('<span style="font-size:18px;"> Read our publication here 👉 https://www.biorxiv.org/content/10.1101/2023.09.06.556559v1</span>', unsafe_allow_html=True)    
 
        
     
