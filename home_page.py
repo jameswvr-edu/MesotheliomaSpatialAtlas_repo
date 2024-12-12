@@ -39,7 +39,7 @@ def home_page():
     #    st.markdown("#")
         st.link_button(
         	"Read our publication here",
-        	"https://www.biorxiv.org/content/10.1101/2023.09.06.556559v1",
+        	"https://aacrjournals.org/cancerrescommun/article/4/8/2133/747011/Spatial-Landscape-of-Malignant-Pleural-and",
         	type= "primary",
         	icon= ":material/open_in_new:"
         )
